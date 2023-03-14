@@ -57,3 +57,13 @@ fileRDD_part = sc.textFile(file_path, minPartitions = 5)
 
 # Check the number of partitions in fileRDD_part
 print("Number of partitions in fileRDD_part is", fileRDD_part.getNumPartitions())
+
+# Create map() transformation to cube numbers
+cubedRDD = numbRDD.map(lambda x: x**3)
+
+# Collect the results
+numbers_all = cubedRDD.collect()
+
+# Print the numbers from numbers_all
+for numb in numbers_all:
+	print(numb)
