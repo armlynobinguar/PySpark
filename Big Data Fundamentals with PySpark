@@ -137,3 +137,12 @@ resultRDD_swap_sort = resultRDD_swap.sortByKey(ascending=False)
 # Show the top 10 most frequent words and their frequencies from the sorted RDD
 for word in resultRDD_swap_sort.take(10):
 	print("{},{}". format(word[1], word[0]))
+	
+	# Create an RDD from the list
+rdd = sc.parallelize(sample_list)
+
+# Create a PySpark DataFrame
+names_df = spark.createDataFrame(rdd, schema=['Name', 'Age'])
+
+# Check the type of names_df
+print("The type of names_df is", type(names_df))
